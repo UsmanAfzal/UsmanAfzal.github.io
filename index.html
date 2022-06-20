@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Usman Afzal - Accessibility Specialist</title>
+	<style>
+		/** --- Box sizing rules --- */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	/** --- Variables --- */
+	:root {
+
+		/* Colours */
+		--black:          #000000;
+		--dark-blue:      #001433;
+		--light-blue:     #005ac2;
+		--blue:           #004878;
+		--red:            #930000;
+		--green:          #009300;
+		--dark-green:     #004d00;
+		--yellow:         #ffe75d;
+		--dark-grey:      #8d8d8d;
+		--light-grey:     #e9e9e9;
+		--grey:           #cccccc;
+		--white:          #ffffff;
+
+		--red-rgb:       147, 0, 0;
+		--green-rgb:     0, 147, 0;
+
+		/* Spacing */
+		--base-space:             0.3em;
+		--base-space-xs:          calc(var(--base-space) * 2);
+		--base-space-sm:          calc(var(--base-space) * 3);
+		--base-space-md:          calc(var(--base-space) * 4);
+		--base-space-lg:          calc(var(--base-space) * 5);
+		--base-space-xl:          calc(var(--base-space) * 6);
+		--base-space-xxl:         calc(var(--base-space) * 7);
+		
+		/* States */
+		--default-hover:          var(--grey);
+		--default-focus-bg:       var(--grey);
+		--default-focus-outline:  var(--dark-grey);
+		--default-focus-width:    0.125em;
+		--default-active:         var(--light-grey);
+		--default-disabled:       var(--white);
+
+		/* Fonts */
+		--base-font-size:         1.2rem;
+		--font-size-md:           calc(var(--base-font-size) * 1.5);
+		--font-size-lg:           calc(var(--base-font-size) * 2);
+		--font-size-xl:           calc(var(--base-font-size) * 2.5);
+		--font-heavy:             600;
+
+		/* Icons */
+		--icon-sm:                var(--font-size-sm);
+		--icon-md:                var(--font-size-md);
+		--icon-lg:                var(--font-size-lg);
+		--icon-xl:                var(--font-size-xl);
+
+		/* Misc */
+		--default-button-solid:   var(--dark-blue);
+		--default-border:         0.1em;
+		--screen-xs:              600px;
+	}
+
+	/** --- Root defaults --- */
+	html {
+		font-size: 16px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	@media (min-width: 650px) {
+		html { 
+			font-size: 14px; 
+		}
+	}
+
+	/** --- Body defaults --- */
+	body {
+		padding: 0 1rem;
+		font-size: var(--base-font-size);
+		line-height: 1.5;
+	}
+
+	/** --- Structures ---- **/
+	.container {
+		margin: 0 auto;
+		padding: var(--base-space-xs);
+	}
+	@media (min-width: 650px) {
+		.container {
+			margin: 0 auto;
+			padding: var(--base-space-xxl);
+			max-width: 1280px;
+		}
+		.row {
+			display: flex;
+			gap: 1em;
+		}
+		.half {
+			width: 50%;
+		}
+	}
+	main {
+		margin-bottom: var(--base-space-xxl);
+		border-bottom: solid 1px var(--grey);
+	}
+
+	/** --- Utilities ---- **/
+	.hidden {
+		display: none !important;
+	}
+
+	.sr-only {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		position: absolute !important;
+	}
+
+	/** --- Focus outline --- */
+	.focus,
+	a:focus {
+		outline: var(--default-focus-width) solid var(--default-focus-outline);
+		outline-offset: var(--default-focus-width);
+	}
+
+	/** --- A elements without class get default styles --- */
+	a:not([class]) {
+		text-decoration-skip-ink: auto;
+	}
+
+	/** --- Remove default margin & padding --- */
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	p,
+	figure {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul {
+		margin: 0;
+	}
+
+	/** --- Make images easier to work with --- */
+	img,
+	picture {
+		width: 100%;
+		max-width: 400px;
+		display: block;
+		margin: 0 auto;
+		border-radius: 2%;
+	}
+
+	/** --- Content default styles --- */
+	p,
+	dl,
+	ul,
+	ol {
+		margin-bottom: var(--base-space-md);
+	}
+
+	/** --- Landmarks ---- **/
+	header {
+		margin-bottom: var(--base-space-xxl);
+	}
+
+	/** --- Headings ---- **/
+	h1, h2, h3, h4, h5 {
+		line-height: var(--base-space-md);
+		color: var(--dark-blue);
+	}
+	h1 {
+		font-size: 2.3rem;
+		margin-bottom: var(--base-space-sm);
+	}
+	h2 {
+		font-size: 1.7rem;
+		margin-bottom: var(--base-space-sm);
+	}
+	h3 {
+		font-size: 1.4rem;
+		margin-bottom: var(--base-space-xs);
+	}
+
+	/** --- Links ---- **/
+	a {
+		color: var(--blue);
+		display: inline-block;
+	}
+
+	a:hover,
+	a:focus {
+		color: var(--blue);
+		text-decoration-thickness: max(3px, .1875rem, .12em);
+		-webkit-text-decoration-skip-ink: none;
+		text-decoration-skip-ink: none;
+		-webkit-text-decoration-skip: none;
+		text-decoration-skip: none;
+	}
+	.list--inline a {
+		padding: var(--base-space) var(--base-space-sm);
+	}
+
+	/** --- Lists ---- **/
+	.list--none {
+		padding: 0;
+		list-style-type: none;
+	}
+	.list--inline {
+		margin-left: calc(-1*var(--base-space-sm));
+	}
+	.list--inline > li {
+    display: inline;
+		border-right: solid 1px var(--dark-blue);
+  }
+	</style>
+</head>
+<body>
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="half">
+					<h1>
+						<span>Usman Afzal</span>
+						<span>Accessibility specialist</span>
+					</h1>
+					<p>Hi there, I'm Usman Afzal. I'm an accessibility trainer and experience technologist.</p>
+					<p>I have over 15 years experience of working within the public private and third sectors.</p>
+					<p>I'm currently Web Development Trainer at <a href="https://www.hassellinclusion.com">Hassell Inclusion</a>.</p>
+				</div>
+				<div class="half">
+					<img src="usman-afzal.jpg" alt="Usman Afzal">
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="container">
+			<h2>Get in touch</h2>
+			<ul class="list--none list--inline">
+				<li><a href="https://uk.linkedin.com/in/afzalusman">LinkedIn</a></li>
+				<li><a href="https://twitter.com/_UsmanAfzal/">Twitter</a></li>
+				<li><a href="https://github.com/UsmanAfzal/">GitHub</a></li>
+				<li><a href="mailto:usman@usmanafzal.co.uk">Email</a></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>
