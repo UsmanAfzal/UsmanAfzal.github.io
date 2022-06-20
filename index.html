@@ -96,7 +96,7 @@
 		.container {
 			margin: 0 auto;
 			padding: var(--base-space-xxl);
-			max-width: 1280px;
+			max-width: 1026px;
 		}
 		.row {
 			display: flex;
@@ -105,10 +105,6 @@
 		.half {
 			width: 50%;
 		}
-	}
-	main {
-		margin-top: var(--base-space-xxl);
-		border-bottom: solid 1px var(--grey);
 	}
 
 	/** --- Utilities ---- **/
@@ -176,6 +172,16 @@
 	/** --- Landmarks ---- **/
 	header {
 		margin-bottom: var(--base-space-xxl);
+	}
+	main {
+		margin-top: var(--base-space-xxl);
+		margin-bottom: var(--base-space-sm);
+		border-bottom: solid 1px var(--grey);
+	}
+	@media (min-width: 650px) {
+		main {
+			margin-bottom: 0;
+		}
 	}
 
 	/** --- Headings ---- **/
