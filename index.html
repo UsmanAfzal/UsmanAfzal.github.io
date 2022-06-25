@@ -107,7 +107,7 @@
 	@media (min-width: 650px) {
 		.container {
 			margin: 0 auto;
-			padding: var(--base-space-xxl);
+			padding: var(--base-space-xs) var(--base-space-xxl);
 			max-width: 1026px;
 		}
 		footer .container {
@@ -115,8 +115,9 @@
 			width: 100%;
 		}
 		.row {
-			display: flex;
 			gap: 1em;
+			display: flex;
+			flex-direction: row-reverse;
 		}
 		.half {
 			width: 50%;
@@ -182,20 +183,22 @@
 
 	/** --- Content default styles --- */
 	p,
-	dl,
-	ul,
-	ol {
+	dl {
 		margin-bottom: var(--base-space-md);
 	}
 
 	/** --- Landmarks ---- **/
-	header {
-		margin-bottom: var(--base-space-xxl);
-	}
 	main {
-		margin-top: var(--base-space-xxl);
+		margin-top: var(--base-space-xs);
 	}
 	@media (min-width: 650px) {
+		header {
+			background-color: #e9e9e9;
+			opacity: 0.8;
+		}
+		main {
+			margin-top: var(--base-space-xxl);
+		}
 		footer {
 			height: 100%;
 			display: flex;
@@ -221,11 +224,6 @@
 	h2 {
 		font-size: 1.7rem;
 		margin-bottom: var(--base-space-sm);
-	}
-	@media (min-width: 650px) {
-		h2 {
-		color: var(--white);
-	}
 	}
 
 	/** --- Links ---- **/
@@ -263,18 +261,32 @@
 		list-style-type: none;
 	}
 	.list--inline {
+		display: flex;
 		margin-left: calc(-1*var(--base-space-sm));
 	}
 	.list--inline > li {
-    display: inline;
 		border-right: solid 1px var(--dark-blue);
   }
 	</style>
 </head>
 <body>
+	<header>
+		<div class="container">
+			<h2 class="sr-only">Get in touch</h2>
+			<ul class="list--none list--inline">
+				<li><a href="https://uk.linkedin.com/in/afzalusman">LinkedIn</a></li>
+				<li><a href="https://twitter.com/_UsmanAfzal/">Twitter</a></li>
+				<li><a href="https://github.com/UsmanAfzal/">GitHub</a></li>
+				<li><a href="mailto:usman@usmanafzal.co.uk">Email</a></li>
+			</ul>
+		</div>
+	</header>
 	<main>
 		<div class="container">
 			<div class="row">
+				<div class="half">
+					<img src="usman-afzal.jpg" alt="Usman Afzal">
+				</div>
 				<div class="half">
 					<div class="block">
 						<h1>
@@ -286,22 +298,8 @@
 						<p>I'm currently Web Development Trainer at <a href="https://www.hassellinclusion.com">Hassell Inclusion</a>.</p>
 					</div>
 				</div>
-				<div class="half">
-					<img src="usman-afzal.jpg" alt="Usman Afzal">
-				</div>
 			</div>
 		</div>
 	</main>
-	<footer>
-		<div class="container">
-			<h2>Get in touch</h2>
-			<ul class="list--none list--inline">
-				<li><a href="https://uk.linkedin.com/in/afzalusman">LinkedIn</a></li>
-				<li><a href="https://twitter.com/_UsmanAfzal/">Twitter</a></li>
-				<li><a href="https://github.com/UsmanAfzal/">GitHub</a></li>
-				<li><a href="mailto:usman@usmanafzal.co.uk">Email</a></li>
-			</ul>
-		</div>
-	</footer>
 </body>
 </html>
